@@ -26,6 +26,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Pages
         uses: actions/configure-pages@v2
       
@@ -34,6 +35,10 @@ jobs:
         with:
           node-version: '16'
           cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build artifact
         run: npm run build
