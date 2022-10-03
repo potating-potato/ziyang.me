@@ -29,10 +29,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+
       - name: Build artifact
-        run: |
-          npm install
-          npm run build
+        run: npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
